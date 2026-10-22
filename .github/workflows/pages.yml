@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - id: pages
+        uses: actions/configure-pages@v5
+      - run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          # "/zoomlion" on github.io; blank once the zoomlion.ie custom domain is set.
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Keep the github.io preview out of search results until zoomlion.ie is live.
+          NEXT_PUBLIC_NOINDEX: ${{ steps.pages.outputs.base_path != '' }}
+          NEXT_PUBLIC_LEAD_ENDPOINT: ${{ vars.LEAD_ENDPOINT }}
+          NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
+      - name: Prepare for Pages
+        run: |
+          touch out/.nojekyll
+          cp out/404/index.html out/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

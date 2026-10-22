@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Zoomlion brand: the logo's lime green (#a4ce4e) on graphite (#333640). */
+@theme {
+  --color-lime: #a4ce4e;
+  --color-lime-bright: #b8e05a;
+  --color-lime-deep: #6f9a1f;
+  --color-lime-tint: #f1f7e3;
+  --color-graphite: #333640;
+  --color-ink: #1a1c21;
+  --color-night: #121418;
+  --color-steel: #5d6370;
+  --color-line: #e3e5e8;
+  --color-paper: #f5f6f3;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-lime-deep);
+  outline-offset: 2px;
+}
+
+/* Condensed uppercase headline style used for every display heading. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+/* Small label above a heading, with the green bar in front. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 3px;
+  background: var(--color-lime);
+}
+
+/* The angled cut that runs through the brand's graphics. */
+.cut-r {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 2.5rem) 100%, 0 100%);
+}
+.cut-l {
+  clip-path: polygon(2.5rem 0, 100% 0, 100% 100%, 0 100%);
+}
+.slab {
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Faint engineering grid behind the dark sections. */
+.grid-bg {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: var(--color-lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* FAQ disclosure marker. */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
