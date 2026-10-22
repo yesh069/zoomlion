@@ -11,7 +11,7 @@ export const BUYING_FAQS: Faq[] = [
   },
   {
     q: "Is Zoomlion a good brand?",
-    a: "Zoomlion is one of the world's largest construction machinery manufacturers. Founded in Changsha, China in 1992 and listed on the Shenzhen and Hong Kong stock exchanges, it builds cranes, aerial work platforms, telehandlers, excavators and concrete machinery for customers in more than 170 countries and regions.",
+    a: `Zoomlion is a major international manufacturer of construction machinery, known for strong, well-equipped machines at competitive prices. In Ireland, Zoomlion machines are supplied through ${DEALER.name}, the authorised distributor, with genuine parts and local service.`,
   },
   {
     q: "Why are there no prices on the website?",

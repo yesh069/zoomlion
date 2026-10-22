@@ -6,12 +6,12 @@ import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
 import MachineCard from "@/components/MachineCard";
 import { QuoteButton } from "@/components/QuoteProvider";
-import { ArrowIcon, EuroIcon, GlobeIcon, PinIcon, ShieldIcon, TruckIcon, WrenchIcon } from "@/components/icons";
+import { ArrowIcon, EuroIcon, PinIcon, ShieldIcon, TruckIcon, WrenchIcon } from "@/components/icons";
 import { CATEGORIES, MACHINES } from "@/lib/catalogue";
 import { BUYING_FAQS } from "@/lib/faqs";
 import { faqPage, graph, itemList, webPage } from "@/lib/schema";
 import { pageMeta } from "@/lib/meta";
-import { DEALER, SITE, ZOOMLION_FACTS } from "@/lib/site";
+import { DEALER, DEALER_HIGHLIGHTS, SITE } from "@/lib/site";
 import { btnOutline, btnOutlineLight, btnPrimary } from "@/lib/ui";
 import { asset } from "@/lib/asset";
 
@@ -83,10 +83,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Key facts strip */}
+        {/* Dealer highlights strip */}
         <div className="relative border-t border-white/10 bg-night/80">
           <dl className="mx-auto grid max-w-7xl grid-cols-2 px-4 sm:px-6 lg:grid-cols-4">
-            {ZOOMLION_FACTS.map((f, i) => (
+            {DEALER_HIGHLIGHTS.map((f, i) => (
               <div key={f.label} className={`py-6 ${i % 2 ? "pl-6" : ""} ${i > 0 ? "lg:border-l lg:border-white/10 lg:pl-8" : ""}`}>
                 <dt className="sr-only">{f.label}</dt>
                 <dd className="display text-4xl text-lime">{f.value}</dd>
@@ -105,7 +105,7 @@ export default function Home() {
             <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Shop by machine type</h2>
           </div>
           <p className="max-w-md text-steel">
-            Zoomlion builds machinery for construction, access and agriculture. These are the lines we supply in Ireland.
+            The Zoomlion machines we supply in Ireland, for construction, access and agriculture.
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
@@ -141,26 +141,25 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:py-28">
           <div>
             <p className="eyebrow text-lime">Why Zoomlion</p>
-            <h2 className="display mt-3 text-5xl sm:text-6xl">One of the world&apos;s largest machinery makers</h2>
+            <h2 className="display mt-3 text-5xl sm:text-6xl">Built to work, priced to make sense</h2>
           </div>
           <div className="space-y-5 text-lg leading-relaxed text-white/75">
             <p>
-              Zoomlion Heavy Industry was founded in 1992 in Changsha, China, and is listed on the Shenzhen and Hong Kong stock
-              exchanges. It designs and builds cranes, aerial work platforms, telehandlers, earthmoving, concrete and agricultural
-              machinery for customers in more than 170 countries and regions.
+              Zoomlion machines are built for hard daily work: strong steel structures, modern and comfortable cabs, and
+              straightforward servicing, at a price that makes sense for Irish contractors, farmers and hire fleets.
             </p>
             <p>
-              In Europe, Zoomlion&apos;s group includes long-established engineering brands such as CIFA in Italy and Wilbert and m-tec
-              in Germany. That scale shows in the machines: modern cabs, strong steel structures and competitive pricing.
+              As the authorised Zoomlion distributor in Ireland, we supply new machines through the official channel, so you get
+              genuine parts, warranty support and a local team who know the machines.
             </p>
             <div className="grid gap-4 pt-4 sm:grid-cols-2">
               <div className="flex gap-3 border-l-4 border-lime bg-white/5 p-5">
-                <GlobeIcon className="size-7 shrink-0 text-lime" />
-                <p className="text-base">A global manufacturer behind every machine</p>
+                <ShieldIcon className="size-7 shrink-0 text-lime" />
+                <p className="text-base">Official Irish distributor: machines supplied through Zoomlion&apos;s own channel</p>
               </div>
               <div className="flex gap-3 border-l-4 border-lime bg-white/5 p-5">
-                <ShieldIcon className="size-7 shrink-0 text-lime" />
-                <p className="text-base">Manufacturer warranty, backed locally in Ireland</p>
+                <WrenchIcon className="size-7 shrink-0 text-lime" />
+                <p className="text-base">Genuine parts and warranty support from our Cork depot</p>
               </div>
             </div>
           </div>

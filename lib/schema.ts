@@ -19,8 +19,6 @@ const manufacturer = {
   "@type": "Organization",
   name: "Zoomlion Heavy Industry Science & Technology Co., Ltd.",
   url: "https://en.zoomlion.com/",
-  foundingDate: "1992",
-  foundingLocation: "Changsha, China",
 };
 
 export const dealer = {

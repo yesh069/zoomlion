@@ -34,12 +34,12 @@ export const DEALER = {
 
 export const addressLines = [DEALER.address.street, `${DEALER.address.locality}, ${DEALER.address.region}`, DEALER.address.postcode];
 
-/** Facts about the manufacturer, phrased so answer engines can quote them. */
-export const ZOOMLION_FACTS = [
-  { value: "1992", label: "Founded in Changsha, China" },
-  { value: "170+", label: "Countries and regions served" },
-  { value: "SZ · HK", label: "Listed in Shenzhen and Hong Kong" },
-  { value: "Cork", label: "Irish sales, parts and service" },
+/** What the dealer offers, shown in the homepage strip under the hero. */
+export const DEALER_HIGHLIGHTS = [
+  { value: "Authorised", label: "Zoomlion distributor for Ireland" },
+  { value: "Co. Cork", label: "Sales, parts and service depot" },
+  { value: "Finance", label: "Options for business buyers" },
+  { value: "Nationwide", label: "Delivery across Ireland" },
 ] as const;
 
 export function waLink(message: string) {
