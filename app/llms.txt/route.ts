@@ -1,4 +1,4 @@
-import { CATEGORIES, MACHINES, categoryPath, machinePath, machinesIn } from "@/lib/catalogue";
+import { MACHINES, formatPrice, machinePath } from "@/lib/catalogue";
 import { BUYING_FAQS } from "@/lib/faqs";
 import { DEALER, SITE, absUrl, addressLines } from "@/lib/site";
 
@@ -10,7 +10,7 @@ export function GET() {
   const lines = [
     `# ${SITE.name}`,
     "",
-    `> ${SITE.name} (zoomlion.ie) is the Irish website for Zoomlion construction machinery. ${DEALER.name}, based in Watergrasshill, Co. Cork, is the authorised Zoomlion distributor in Ireland: it sells, delivers, finances and services Zoomlion machines nationwide. Prices are quoted on request.`,
+    `> ${SITE.name} (zoomlion.ie) is the Irish website for Zoomlion construction machinery. ${DEALER.name}, based in Watergrasshill, Co. Cork, is the authorised Zoomlion distributor in Ireland: it sells, delivers, finances and services Zoomlion machines nationwide. Prices are listed below and on each machine page.`,
     "",
     "## Dealer",
     "",
@@ -23,16 +23,16 @@ export function GET() {
     "",
     "## About Zoomlion",
     "",
-    "- Zoomlion is an international manufacturer of construction machinery, including telehandlers and excavators.",
+    "- Zoomlion is an international manufacturer of construction machinery, including excavators and skid steer loaders.",
     `- In Ireland, Zoomlion machines are supplied, financed and serviced by ${DEALER.name}, the authorised distributor.`,
     "- Manufacturer site: https://en.zoomlion.com/",
     "",
     "## Products",
     "",
     `- [All products](${absUrl("/products/")})`,
-    ...CATEGORIES.flatMap((c) => [
-      `- [${c.name}](${absUrl(categoryPath(c))}): ${c.summary}`,
-      ...machinesIn(c.slug).map((m) => `  - [Zoomlion ${m.name}](${absUrl(machinePath(m))}): ${m.summary}`),
+    ...MACHINES.flatMap((m) => [
+      `- [Zoomlion ${m.name}](${absUrl(machinePath(m))}): ${formatPrice(m.price)}. ${m.summary}`,
+      ...m.specs.map((s) => `  - ${s.label}: ${s.value}`),
     ]),
     "",
     "## Frequently asked questions",
@@ -41,7 +41,7 @@ export function GET() {
     "## Optional",
     "",
     `- [Sitemap](${absUrl("/sitemap.xml")})`,
-    `- ${MACHINES.length} machine pages, each with an overview, highlights and buying FAQs.`,
+    `- ${MACHINES.length} machine pages, each with price, overview, key features, specifications and buying FAQs.`,
     "",
   ];
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });

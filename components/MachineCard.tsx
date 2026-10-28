@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { categoryBySlug, machinePath, type Machine } from "@/lib/catalogue";
+import { formatPrice, machinePath, type Machine } from "@/lib/catalogue";
+import { asset } from "@/lib/asset";
 import { ArrowIcon } from "./icons";
 import { QuoteButton } from "./QuoteProvider";
-import { asset } from "@/lib/asset";
 
 export default function MachineCard({ machine: m, priority = false }: { machine: Machine; priority?: boolean }) {
-  const cat = categoryBySlug(m.category);
   return (
     <article className="group relative flex flex-col border border-line bg-white transition hover:-translate-y-1 hover:border-graphite/30 hover:shadow-xl">
       <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-paper to-white">
@@ -17,25 +16,28 @@ export default function MachineCard({ machine: m, priority = false }: { machine:
           width={m.image.width}
           height={m.image.height}
           loading={priority ? "eager" : "lazy"}
-          className="relative mx-auto h-full w-auto object-contain p-6 transition duration-300 group-hover:scale-[1.04]"
+          className="relative h-full w-full object-contain p-6 transition duration-300 group-hover:scale-[1.04]"
         />
         <span className="absolute left-0 top-4 bg-graphite px-3 py-1 font-display text-xs font-bold uppercase tracking-widest text-lime">
-          {cat?.name}
+          {m.type}
         </span>
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="display text-2xl text-graphite">
-          <Link href={machinePath(m)} className="after:absolute after:inset-0">
-            {m.name}
-          </Link>
-        </h3>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="display text-2xl text-graphite">
+            <Link href={machinePath(m)} className="after:absolute after:inset-0">
+              {m.name}
+            </Link>
+          </h3>
+          <p className="display shrink-0 text-2xl text-lime-deep">{formatPrice(m.price)}</p>
+        </div>
         <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-steel">{m.summary}</p>
         <div className="relative z-10 mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
           <span className="flex items-center gap-1.5 font-display font-bold uppercase tracking-wide text-graphite">
             View machine <ArrowIcon className="size-4 transition group-hover:translate-x-1" />
           </span>
           <QuoteButton machine={m.name} className="font-display font-bold uppercase tracking-wide text-lime-deep hover:text-graphite">
-            Get a quote
+            Enquire
           </QuoteButton>
         </div>
       </div>

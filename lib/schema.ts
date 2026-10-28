@@ -1,6 +1,6 @@
 // schema.org structured data (JSON-LD). Search engines and AI assistants read
 // these to understand who sells what, where.
-import { CATEGORIES, machinePath, type Category, type Faq, type Machine } from "./catalogue";
+import { MACHINES, machinePath, type Faq, type Machine } from "./catalogue";
 import { DEALER, SITE, absUrl } from "./site";
 
 const DEALER_ID = absUrl("/#dealer");
@@ -43,7 +43,7 @@ export const dealer = {
   hasMap: DEALER.mapsUrl,
   areaServed: { "@type": "Country", name: DEALER.areaServed },
   brand: { "@id": BRAND_ID },
-  knowsAbout: ["Zoomlion", ...CATEGORIES.map((c) => c.name), "Plant machinery finance", "Machinery parts and service"],
+  knowsAbout: ["Zoomlion", ...new Set(MACHINES.map((m) => m.type)), "Plant machinery finance", "Machinery parts and service"],
   contactPoint: [
     { "@type": "ContactPoint", telephone: DEALER.phone, contactType: "sales", areaServed: "IE", availableLanguage: "en" },
     { "@type": "ContactPoint", telephone: DEALER.mobile, contactType: "customer service", areaServed: "IE", availableLanguage: "en" },
@@ -92,7 +92,7 @@ export function webPage(path: string, name: string, description: string, type = 
   };
 }
 
-export function product(m: Machine, category: Category) {
+export function product(m: Machine) {
   return {
     "@type": "Product",
     "@id": absUrl(machinePath(m)) + "#product",
@@ -101,11 +101,18 @@ export function product(m: Machine, category: Category) {
     description: m.description.join(" "),
     image: absUrl(m.image.src),
     url: absUrl(machinePath(m)),
-    category: category.name,
+    category: m.type,
     brand: { "@id": BRAND_ID },
     manufacturer,
-    // No Offer: prices are not published (quotes only), and an Offer without a
-    // price is flagged as an error by Google.
+    offers: {
+      "@type": "Offer",
+      url: absUrl(machinePath(m)),
+      price: m.price,
+      priceCurrency: "EUR",
+      itemCondition: "https://schema.org/NewCondition",
+      areaServed: "IE",
+      seller: { "@id": DEALER_ID },
+    },
     additionalProperty: m.specs.map((s) => ({ "@type": "PropertyValue", name: s.label, value: s.value })),
   };
 }

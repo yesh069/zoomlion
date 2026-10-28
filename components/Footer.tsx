@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CATEGORIES, categoryPath } from "@/lib/catalogue";
+import { MACHINES, machinePath } from "@/lib/catalogue";
 import { DEALER, addressLines, waLink } from "@/lib/site";
 import Logo from "./Logo";
 import { MailIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
@@ -20,10 +20,10 @@ export default function Footer() {
         <div>
           <h2 className="eyebrow text-white">Products</h2>
           <ul className="mt-5 space-y-2.5">
-            {CATEGORIES.map((c) => (
-              <li key={c.slug}>
-                <Link href={categoryPath(c)} className="hover:text-lime">
-                  {c.name}
+            {MACHINES.map((m) => (
+              <li key={m.slug}>
+                <Link href={machinePath(m)} className="hover:text-lime">
+                  {m.name}
                 </Link>
               </li>
             ))}

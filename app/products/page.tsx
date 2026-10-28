@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import MachineCard from "@/components/MachineCard";
 import PageHero from "@/components/PageHero";
-import { ArrowIcon } from "@/components/icons";
-import { CATEGORIES, MACHINES, categoryPath, machinesIn } from "@/lib/catalogue";
-import { graph, itemList, webPage } from "@/lib/schema";
+import { MACHINES, formatPrice } from "@/lib/catalogue";
 import { pageMeta } from "@/lib/meta";
+import { graph, itemList, webPage } from "@/lib/schema";
 import { DEALER } from "@/lib/site";
 
-const TITLE = "Zoomlion Machinery for Sale in Ireland | O'Regan Plant Sales";
-const DESCRIPTION = `Every Zoomlion machine available in Ireland: ${CATEGORIES.map((c) => c.name.toLowerCase()).join(", ")}. Quotes and finance from ${DEALER.name}.`;
+const TITLE = "Zoomlion Excavators & Skid Steers for Sale in Ireland";
+const DESCRIPTION = `Zoomlion ${MACHINES.map((m) => `${m.model} (${formatPrice(m.price)})`).join(", ")} for sale in Ireland from ${DEALER.name}, Co. Cork.`;
 
 export const metadata: Metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/products/", absoluteTitle: true });
 
@@ -25,62 +23,48 @@ export default function ProductsPage() {
           { name: "Products", path: "/products/" },
         ]}
         eyebrow="Products"
-        title="Zoomlion machinery"
+        title="Zoomlion machines"
       >
         <p>
-          Zoomlion telehandlers and excavators for sale in Ireland. Every machine is supplied with delivery,
-          finance options, servicing and parts from {DEALER.name} in Co. Cork. Prices are quoted to your specification.
+          Zoomlion mini excavators and skid steer loaders for sale in Ireland, with prices. Every machine comes with delivery, finance
+          options, servicing and genuine parts from {DEALER.name} in Co. Cork.
         </p>
       </PageHero>
 
-      {/* Category jump links */}
-      <nav aria-label="Categories" className="sticky top-[108px] z-30 border-b border-line bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3 sm:px-6">
-          {CATEGORIES.map((c) => (
-            <a
-              key={c.slug}
-              href={`#${c.slug}`}
-              className="shrink-0 border border-line px-4 py-2 font-display font-bold uppercase tracking-wide text-graphite hover:border-graphite hover:bg-lime-tint"
-            >
-              {c.name} <span className="text-steel">({machinesIn(c.slug).length})</span>
-            </a>
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {MACHINES.map((m, i) => (
+            <MachineCard key={m.slug} machine={m} priority={i < 3} />
           ))}
         </div>
-      </nav>
 
-      <div className="mx-auto max-w-7xl space-y-20 px-4 py-16 sm:px-6 lg:py-20">
-        {CATEGORIES.map((c) => {
-          const machines = machinesIn(c.slug);
-          return (
-            <section key={c.slug} id={c.slug} aria-labelledby={`${c.slug}-h`} className="scroll-mt-48">
-              <div className="flex flex-col gap-4 border-b-2 border-graphite pb-5 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <h2 id={`${c.slug}-h`} className="display text-4xl text-graphite sm:text-5xl">{c.name}</h2>
-                  <p className="mt-2 max-w-2xl text-steel">{c.summary}</p>
-                </div>
-                <Link href={categoryPath(c)} className="flex shrink-0 items-center gap-2 font-display font-bold uppercase tracking-wide text-graphite hover:text-lime-deep">
-                  About {c.name.toLowerCase()} <ArrowIcon className="size-4" />
-                </Link>
-              </div>
-              {machines.length ? (
-                <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {machines.map((m) => (
-                    <MachineCard key={m.slug} machine={m} />
-                  ))}
-                </div>
-              ) : (
-                <p className="mt-8 border-l-4 border-lime bg-paper p-6 text-steel">
-                  We&apos;re adding Zoomlion {c.name.toLowerCase()} to the site.{" "}
-                  <Link href="/contact/" className="font-semibold text-graphite underline decoration-lime decoration-2 underline-offset-4">
-                    Ask us what&apos;s available now
-                  </Link>
-                  .
-                </p>
-              )}
-            </section>
-          );
-        })}
-      </div>
+        {/* Quick comparison: answer engines and buyers both like a table. */}
+        <h2 className="display mt-20 text-4xl text-graphite">Compare at a glance</h2>
+        <div className="mt-6 overflow-x-auto">
+          <table className="w-full min-w-[640px] border-collapse text-left">
+            <thead>
+              <tr className="border-b-2 border-graphite font-display text-lg uppercase text-graphite">
+                <th scope="col" className="px-4 py-3">Model</th>
+                <th scope="col" className="px-4 py-3">Type</th>
+                <th scope="col" className="px-4 py-3">Operating weight</th>
+                <th scope="col" className="px-4 py-3">Rated power</th>
+                <th scope="col" className="px-4 py-3">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {MACHINES.map((m) => (
+                <tr key={m.slug} className="border-b border-line odd:bg-paper">
+                  <th scope="row" className="px-4 py-3.5 font-semibold text-graphite">Zoomlion {m.model}</th>
+                  <td className="px-4 py-3.5 text-steel">{m.type}</td>
+                  <td className="px-4 py-3.5 text-steel">{m.specs.find((s) => s.label === "Operating weight")?.value}</td>
+                  <td className="px-4 py-3.5 text-steel">{m.specs.find((s) => s.label === "Rated power")?.value}</td>
+                  <td className="px-4 py-3.5 font-semibold text-graphite">{formatPrice(m.price)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <CtaBand title="Not sure which machine?" />
     </>

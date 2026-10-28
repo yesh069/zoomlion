@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { CATEGORIES, categoryPath } from "@/lib/catalogue";
+import { MACHINES, formatPrice, machinePath } from "@/lib/catalogue";
+import { asset } from "@/lib/asset";
 import { DEALER } from "@/lib/site";
 import { btnPrimary } from "@/lib/ui";
 import Logo from "./Logo";
@@ -63,10 +64,16 @@ export default function Header() {
                   </Link>
                   <div className="invisible absolute left-1/2 top-full w-80 -translate-x-1/2 pt-5 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     <div className="border-t-4 border-lime bg-white p-2 shadow-xl">
-                      {CATEGORIES.map((c) => (
-                        <Link key={c.slug} href={categoryPath(c)} className="block px-4 py-3 hover:bg-paper">
-                          <span className="font-display text-lg font-bold uppercase text-graphite">{c.name}</span>
-                          <span className="mt-0.5 block text-sm leading-snug text-steel">{c.summary}</span>
+                      {MACHINES.map((m) => (
+                        <Link key={m.slug} href={machinePath(m)} className="flex items-center gap-4 px-3 py-2.5 hover:bg-paper">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={asset(m.image.src)} alt="" width={m.image.width} height={m.image.height} className="h-12 w-16 shrink-0 object-contain" />
+                          <span>
+                            <span className="block font-display text-lg font-bold uppercase leading-tight text-graphite">{m.model}</span>
+                            <span className="block text-sm text-steel">
+                              {m.type} · <span className="font-semibold text-graphite">{formatPrice(m.price)}</span>
+                            </span>
+                          </span>
                         </Link>
                       ))}
                       <Link href="/products/" className="mt-1 block bg-paper px-4 py-3 text-sm font-semibold text-graphite hover:bg-lime-tint">
@@ -115,9 +122,10 @@ export default function Header() {
                   {item.label}
                 </Link>
                 {item.menu &&
-                  CATEGORIES.map((c) => (
-                    <Link key={c.slug} href={categoryPath(c)} className="block border-b border-line py-3 pl-4 text-steel">
-                      {c.name}
+                  MACHINES.map((m) => (
+                    <Link key={m.slug} href={machinePath(m)} className="flex justify-between border-b border-line py-3 pl-4 text-steel">
+                      {m.name}
+                      <span className="font-semibold text-graphite">{formatPrice(m.price)}</span>
                     </Link>
                   ))}
               </div>

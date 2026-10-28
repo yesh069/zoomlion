@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import CategoryTile from "@/components/CategoryTile";
 import CtaBand from "@/components/CtaBand";
 import FaqList from "@/components/FaqList";
 import JsonLd from "@/components/JsonLd";
 import MachineCard from "@/components/MachineCard";
 import { QuoteButton } from "@/components/QuoteProvider";
 import { ArrowIcon, EuroIcon, PinIcon, ShieldIcon, TruckIcon, WrenchIcon } from "@/components/icons";
-import { CATEGORIES, MACHINES } from "@/lib/catalogue";
+import { MACHINES, machineBySlug } from "@/lib/catalogue";
 import { BUYING_FAQS } from "@/lib/faqs";
 import { faqPage, graph, itemList, webPage } from "@/lib/schema";
 import { pageMeta } from "@/lib/meta";
@@ -16,14 +15,13 @@ import { btnOutline, btnOutlineLight, btnPrimary } from "@/lib/ui";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = pageMeta({
-  title: "Zoomlion Ireland | Telehandlers, Excavators & Machinery for Sale",
+  title: "Zoomlion Ireland | Mini Excavators & Skid Steer Loaders for Sale",
   description: SITE.description,
   path: "/",
   absoluteTitle: true,
 });
 
-const featured = MACHINES.filter((m) => m.featured);
-const heroMain = featured[0];
+const heroMain = machineBySlug("ze55gu") ?? MACHINES[0];
 
 const DEALER_POINTS = [
   { icon: PinIcon, title: "Irish dealer, Cork depot", text: "Talk to people who know the machines, at Watergrasshill Business Park, just off the M8." },
@@ -33,15 +31,15 @@ const DEALER_POINTS = [
 ];
 
 const STEPS = [
-  { title: "Tell us the job", text: "What you lift, reach or dig, the site and the attachments you need." },
-  { title: "Get your quote", text: "A written price for the right Zoomlion machine, with finance options if you want them." },
+  { title: "Pick your machine", text: "Compare the range and prices online, or tell us the job and we'll recommend the right model." },
+  { title: "Get your quote", text: "A written quote with attachments, delivery and finance options if you want them." },
   { title: "Delivery & handover", text: "We deliver, walk your operators through the machine, and support it afterwards." },
 ];
 
 export default function Home() {
   return (
     <>
-      <JsonLd data={graph(webPage("/", SITE.name, SITE.description), itemList(featured), faqPage(BUYING_FAQS))} />
+      <JsonLd data={graph(webPage("/", SITE.name, SITE.description), itemList(MACHINES), faqPage(BUYING_FAQS))} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-graphite text-white">
@@ -57,12 +55,12 @@ export default function Home() {
               <span className="text-lime">Irish support.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-              Zoomlion telehandlers, excavators and construction machinery for sale in Ireland, supplied, financed and
+              Zoomlion mini excavators and skid steer loaders for sale in Ireland, supplied, financed and
               serviced by <strong className="font-semibold text-white">{DEALER.name}</strong> from Watergrasshill, Co. Cork.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/products/" className={btnPrimary}>
-                Browse products <ArrowIcon />
+                View machines &amp; prices <ArrowIcon />
               </Link>
               <QuoteButton className={btnOutlineLight} />
             </div>
@@ -97,38 +95,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="eyebrow text-lime-deep">The range</p>
-            <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Shop by machine type</h2>
-          </div>
-          <p className="max-w-md text-steel">
-            The Zoomlion machines we supply in Ireland, for construction and agriculture.
-          </p>
-        </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {CATEGORIES.map((c, i) => (
-            <CategoryTile key={c.slug} category={c} index={i} />
-          ))}
-        </div>
-      </section>
-
-      {/* Featured machines */}
+      {/* Machines */}
       <section className="bg-paper">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="eyebrow text-lime-deep">Featured</p>
-              <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Machines in focus</h2>
+              <p className="eyebrow text-lime-deep">The range</p>
+              <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Our Zoomlion machines</h2>
             </div>
             <Link href="/products/" className={btnOutline}>
-              All products <ArrowIcon />
+              Compare machines <ArrowIcon />
             </Link>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((m) => (
+            {MACHINES.map((m) => (
               <MachineCard key={m.slug} machine={m} />
             ))}
           </div>

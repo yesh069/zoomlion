@@ -1,4 +1,4 @@
-import type { Faq } from "./catalogue";
+import { MACHINES, formatPrice, type Faq } from "./catalogue";
 import { DEALER } from "./site";
 
 // Site-wide questions. Each answer opens with the direct answer in one sentence,
@@ -14,8 +14,8 @@ export const BUYING_FAQS: Faq[] = [
     a: `Zoomlion is a major international manufacturer of construction machinery, known for strong, well-equipped machines at competitive prices. In Ireland, Zoomlion machines are supplied through ${DEALER.name}, the authorised distributor, with genuine parts and local service.`,
   },
   {
-    q: "Why are there no prices on the website?",
-    a: "Prices depend on the specification, attachments, finance and delivery you choose, so we quote each machine individually. Send a quote request and we will reply with a price for the exact machine you need.",
+    q: "How much do Zoomlion machines cost in Ireland?",
+    a: `${MACHINES.map((m) => `The Zoomlion ${m.model} ${m.type.toLowerCase()} is ${formatPrice(m.price)}`).join("; ")}. Attachments, delivery and finance are quoted on request.`,
   },
   {
     q: "Do you offer finance on Zoomlion machines?",
