@@ -3,7 +3,7 @@
 Website for Zoomlion machinery in Ireland, run by O'Regan Plant Sales (authorised distributor, Watergrasshill, Co. Cork).
 Lead generation: each machine shows its price, every "Enquire" opens the enquiry form, and WhatsApp/phone/email are on every page.
 
-Next.js (App Router, TypeScript, Tailwind CSS v4), static export to `out/`, hosted on Firebase Hosting.
+Next.js (App Router, TypeScript, Tailwind CSS v4), static export to `out/`, deployed to GitHub Pages by `.github/workflows/pages.yml` on every push to `main` (Firebase config is kept for later).
 
 ## Pages
 
@@ -35,5 +35,5 @@ Set `NEXT_PUBLIC_LEAD_ENDPOINT` to the Google Apps Script web app (`apps-script/
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # static site in out/
-npx firebase-tools deploy --only hosting
+git push      # GitHub Actions builds and deploys to Pages
 ```
