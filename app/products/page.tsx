@@ -28,7 +28,7 @@ export default function ProductsPage() {
         title="Zoomlion machinery"
       >
         <p>
-          Zoomlion telehandlers, aerial work platforms and excavators for sale in Ireland. Every machine is supplied with delivery,
+          Zoomlion telehandlers and excavators for sale in Ireland. Every machine is supplied with delivery,
           finance options, servicing and parts from {DEALER.name} in Co. Cork. Prices are quoted to your specification.
         </p>
       </PageHero>

@@ -6,7 +6,7 @@ export const SITE = {
   name: "Zoomlion Ireland",
   tagline: "Zoomlion machinery in Ireland, sold and supported by O'Regan Plant Sales",
   description:
-    "Zoomlion telehandlers, aerial platforms and machinery for sale in Ireland. Authorised distributor O'Regan Plant Sales, Co. Cork: quotes, finance, service.",
+    "Zoomlion telehandlers, excavators and machinery for sale in Ireland. Authorised distributor O'Regan Plant Sales, Co. Cork: quotes, finance and service.",
   locale: "en_IE",
 } as const;
 

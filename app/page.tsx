@@ -16,7 +16,7 @@ import { btnOutline, btnOutlineLight, btnPrimary } from "@/lib/ui";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = pageMeta({
-  title: "Zoomlion Ireland | Telehandlers, Aerial Platforms & Machinery for Sale",
+  title: "Zoomlion Ireland | Telehandlers, Excavators & Machinery for Sale",
   description: SITE.description,
   path: "/",
   absoluteTitle: true,
@@ -57,7 +57,7 @@ export default function Home() {
               <span className="text-lime">Irish support.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-              Zoomlion telehandlers, aerial work platforms and construction machinery for sale in Ireland, supplied, financed and
+              Zoomlion telehandlers, excavators and construction machinery for sale in Ireland, supplied, financed and
               serviced by <strong className="font-semibold text-white">{DEALER.name}</strong> from Watergrasshill, Co. Cork.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -105,10 +105,10 @@ export default function Home() {
             <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Shop by machine type</h2>
           </div>
           <p className="max-w-md text-steel">
-            The Zoomlion machines we supply in Ireland, for construction, access and agriculture.
+            The Zoomlion machines we supply in Ireland, for construction and agriculture.
           </p>
         </div>
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {CATEGORIES.map((c, i) => (
             <CategoryTile key={c.slug} category={c} index={i} />
           ))}

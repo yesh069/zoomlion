@@ -2,8 +2,8 @@
 // Add a machine to MACHINES and it appears on the homepage, its category page,
 // the products page, the sitemap and llms.txt.
 //
-// NOTE: the machines below are a starting set built from the two product shots
-// we already have. Replace them with the confirmed dealer range (and its
+// NOTE: the machine below is a starting entry built from the product shot we
+// already have. Replace them with the confirmed dealer range (and its
 // manufacturer specs) when it arrives. Never invent spec figures: leave `specs`
 // empty and the page shows "full specification on request".
 
@@ -65,25 +65,6 @@ export const CATEGORIES: Category[] = [
     ],
   },
   {
-    slug: "aerial-work-platforms",
-    name: "Aerial Work Platforms",
-    singular: "aerial work platform",
-    summary: "Truck-mounted, boom and scissor platforms (MEWPs) for safe work at height.",
-    intro:
-      "Zoomlion aerial work platforms, also called MEWPs or cherry pickers, lift people and tools safely to work at height. Zoomlion builds truck-mounted, boom and scissor platforms; O'Regan Plant Sales supplies and supports them across Ireland from Co. Cork.",
-    uses: ["Building maintenance", "Utilities", "Tree surgery", "Signage", "Facilities"],
-    faqs: [
-      {
-        q: "What is a MEWP?",
-        a: "MEWP stands for mobile elevating work platform: a machine that raises a platform carrying people, tools and materials to work at height. Truck-mounted platforms, boom lifts (cherry pickers) and scissor lifts are all MEWPs.",
-      },
-      {
-        q: "What is the difference between a truck-mounted platform and a boom lift?",
-        a: "A truck-mounted platform is built onto a road vehicle, so it drives between jobs at road speed and sets up on outriggers. A self-propelled boom lift drives around the site itself but has to be transported between sites on a trailer or lorry.",
-      },
-    ],
-  },
-  {
     slug: "excavators",
     name: "Excavators",
     singular: "excavator",
@@ -113,21 +94,6 @@ export const MACHINES: Machine[] = [
       "Fit forks for pallets and building materials, or a bucket for bulk loading. O'Regan Plant Sales supplies the ZTH3513 in Ireland with delivery, handover, servicing and parts from our Co. Cork depot.",
     ],
     highlights: ["Telescopic boom for lift and reach", "Enclosed operator's cab", "Off-road tyres for rough terrain", "Forks, bucket and other attachments"],
-    specs: [],
-    featured: true,
-  },
-  {
-    slug: "truck-mounted-aerial-platform",
-    model: "Truck-mounted platform",
-    name: "Truck-Mounted Aerial Work Platform",
-    category: "aerial-work-platforms",
-    image: { src: "/machines/truck-mounted-platform.webp", width: 299, height: 407 },
-    summary: "A Zoomlion telescopic aerial platform on a light truck chassis: drive to the job, set up and work at height.",
-    description: [
-      "Zoomlion's truck-mounted aerial work platform puts a telescopic boom and a work basket on a light truck chassis. It drives between jobs on the road, sets up on four outriggers and lifts the crew and their tools to work at height.",
-      "It suits utilities, building maintenance, signage and tree work, where the crew moves between several sites in a day. O'Regan Plant Sales will confirm the chassis and working height options available in Ireland.",
-    ],
-    highlights: ["Drives between jobs at road speed", "Telescopic boom with work basket", "Four stabilising outriggers", "Quick set-up on site"],
     specs: [],
     featured: true,
   },

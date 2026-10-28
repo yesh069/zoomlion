@@ -23,7 +23,7 @@ export function GET() {
     "",
     "## About Zoomlion",
     "",
-    "- Zoomlion is an international manufacturer of construction machinery: telehandlers, aerial work platforms (MEWPs), excavators and more.",
+    "- Zoomlion is an international manufacturer of construction machinery, including telehandlers and excavators.",
     `- In Ireland, Zoomlion machines are supplied, financed and serviced by ${DEALER.name}, the authorised distributor.`,
     "- Manufacturer site: https://en.zoomlion.com/",
     "",

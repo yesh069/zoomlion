@@ -15,7 +15,7 @@ const heading = Barlow_Condensed({ subsets: ["latin"], weight: ["600", "700", "8
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: "Zoomlion Ireland | Telehandlers, Aerial Platforms & Machinery", template: "%s | Zoomlion Ireland" },
+  title: { default: "Zoomlion Ireland | Telehandlers, Excavators & Machinery", template: "%s | Zoomlion Ireland" },
   description: SITE.description,
   applicationName: SITE.name,
   openGraph: { type: "website", locale: SITE.locale, siteName: SITE.name, url: "/", images: [{ url: "/og.png", width: 1200, height: 630, alt: SITE.tagline }] },

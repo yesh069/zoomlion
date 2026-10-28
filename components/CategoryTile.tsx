@@ -12,7 +12,7 @@ export default function CategoryTile({ category: c, index }: { category: Categor
       className="group relative flex min-h-[420px] flex-col justify-between overflow-hidden bg-graphite p-7 text-white transition hover:bg-ink"
     >
       <div className="grid-bg absolute inset-0" aria-hidden />
-      <div className="slab absolute -right-10 bottom-0 h-2/3 w-3/4 bg-lime/90 transition duration-300 group-hover:w-[85%]" aria-hidden />
+      <div className="slab absolute -right-10 bottom-0 h-[55%] w-3/4 bg-lime/90 transition duration-300 group-hover:w-[85%]" aria-hidden />
       <div className="relative">
         <span className="font-display text-sm font-bold tracking-[0.2em] text-lime">0{index + 1}</span>
         <h3 className="display mt-2 text-4xl">{c.name}</h3>
