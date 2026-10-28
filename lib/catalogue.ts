@@ -18,7 +18,7 @@ export type Machine = {
   name: string;
   /** Machine type for labels and sentences, e.g. "Mini excavator". */
   type: string;
-  /** Price in euro. */
+  /** Price in euro, excluding VAT. */
   price: number;
   /** Cut-out product shot (transparent background). */
   image: Img;
@@ -139,5 +139,9 @@ export const MACHINES: Machine[] = [
 export const machineBySlug = (slug: string) => MACHINES.find((m) => m.slug === slug);
 export const machinePath = (m: Pick<Machine, "slug">) => `/products/${m.slug}/`;
 
+// Prices are ex-VAT. formatPrice is for text ("€27,800 + VAT"); big price
+// displays show formatAmount with the VAT note set smaller beside it.
 const EUR = new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
-export const formatPrice = (n: number) => EUR.format(n);
+export const VAT_NOTE = "+ VAT";
+export const formatAmount = (n: number) => EUR.format(n);
+export const formatPrice = (n: number) => `${EUR.format(n)} ${VAT_NOTE}`;

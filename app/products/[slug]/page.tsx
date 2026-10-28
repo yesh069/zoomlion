@@ -8,7 +8,7 @@ import MachineCard from "@/components/MachineCard";
 import { QuoteButton } from "@/components/QuoteProvider";
 import { CheckIcon, DownloadIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 import { asset } from "@/lib/asset";
-import { MACHINES, formatPrice, machineBySlug, machinePath, type Faq, type Machine } from "@/lib/catalogue";
+import { MACHINES, VAT_NOTE, formatAmount, formatPrice, machineBySlug, machinePath, type Faq, type Machine } from "@/lib/catalogue";
 import { pageMeta } from "@/lib/meta";
 import { faqPage, graph, product, webPage } from "@/lib/schema";
 import { DEALER, waLink } from "@/lib/site";
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!m) return {};
   return pageMeta({
     title: titleFor(m),
-    description: `${m.summary} ${formatPrice(m.price)} from ${DEALER.name}.`,
+    description: `${m.summary} ${formatPrice(m.price)}, Co. Cork.`,
     path: machinePath(m),
     absoluteTitle: true,
     image: { url: m.image.src, width: m.image.width, height: m.image.height },
@@ -103,8 +103,10 @@ export default async function MachinePage({ params }: Props) {
 
             <div className="mt-6 flex items-end gap-4 border-l-4 border-lime bg-white px-5 py-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-steel">Price</p>
-                <p className="display text-5xl text-graphite">{formatPrice(m.price)}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel">Price (excl. VAT)</p>
+                <p className="display text-5xl text-graphite">
+                  {formatAmount(m.price)} <span className="font-sans text-lg font-semibold normal-case text-steel">{VAT_NOTE}</span>
+                </p>
               </div>
               <p className="pb-1.5 text-sm text-steel">Finance available · Delivered across Ireland</p>
             </div>

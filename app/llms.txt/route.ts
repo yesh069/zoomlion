@@ -10,7 +10,7 @@ export function GET() {
   const lines = [
     `# ${SITE.name}`,
     "",
-    `> ${SITE.name} (zoomlion.ie) is the Irish website for Zoomlion construction machinery. ${DEALER.name}, based in Watergrasshill, Co. Cork, is the authorised Zoomlion distributor in Ireland: it sells, delivers, finances and services Zoomlion machines nationwide. Prices are listed below and on each machine page.`,
+    `> ${SITE.name} (zoomlion.ie) is the Irish website for Zoomlion construction machinery. ${DEALER.name}, based in Watergrasshill, Co. Cork, is the authorised Zoomlion distributor in Ireland: it sells, delivers, finances and services Zoomlion machines nationwide. Prices are listed below and on each machine page, excluding VAT.`,
     "",
     "## Dealer",
     "",

@@ -109,6 +109,7 @@ export function product(m: Machine) {
       url: absUrl(machinePath(m)),
       price: m.price,
       priceCurrency: "EUR",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: m.price, priceCurrency: "EUR", valueAddedTaxIncluded: false },
       itemCondition: "https://schema.org/NewCondition",
       areaServed: "IE",
       seller: { "@id": DEALER_ID },

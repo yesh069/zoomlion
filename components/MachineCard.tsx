@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { formatPrice, machinePath, type Machine } from "@/lib/catalogue";
+import { VAT_NOTE, formatAmount, machinePath, type Machine } from "@/lib/catalogue";
 import { asset } from "@/lib/asset";
 import { ArrowIcon } from "./icons";
 import { QuoteButton } from "./QuoteProvider";
@@ -29,7 +29,10 @@ export default function MachineCard({ machine: m, priority = false }: { machine:
               {m.name}
             </Link>
           </h3>
-          <p className="display shrink-0 text-2xl text-lime-deep">{formatPrice(m.price)}</p>
+          <p className="shrink-0 text-right">
+            <span className="display block text-2xl text-lime-deep">{formatAmount(m.price)}</span>
+            <span className="block text-xs font-semibold text-steel">{VAT_NOTE}</span>
+          </p>
         </div>
         <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-steel">{m.summary}</p>
         <div className="relative z-10 mt-5 flex items-center justify-between gap-3 border-t border-line pt-4">
