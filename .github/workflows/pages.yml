@@ -14,9 +14,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# Runs on our own self-hosted runner (GitHub-hosted minutes are unavailable on
+# this account). Steps are cross-platform so the runner can be Windows or Linux.
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,16 +38,15 @@ jobs:
           NEXT_PUBLIC_LEAD_ENDPOINT: ${{ vars.LEAD_ENDPOINT }}
           NEXT_PUBLIC_GA_ID: ${{ vars.GA_ID }}
       - name: Prepare for Pages
-        run: |
-          touch out/.nojekyll
-          cp out/404/index.html out/404.html
+        # .nojekyll so Pages serves the _next/ folder; 404.html for unknown URLs.
+        run: node -e "const fs=require('fs');fs.writeFileSync('out/.nojekyll','');fs.copyFileSync('out/404/index.html','out/404.html')"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
