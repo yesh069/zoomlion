@@ -14,11 +14,11 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
-# Runs on our own self-hosted runner (GitHub-hosted minutes are unavailable on
-# this account). Steps are cross-platform so the runner can be Windows or Linux.
+# Set the RUNNER repository variable to self-hosted to use the private runner.
+# Leave it unset to use GitHub-hosted Ubuntu runners.
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ${{ vars.RUNNER || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,7 +46,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ${{ vars.RUNNER || 'ubuntu-latest' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
