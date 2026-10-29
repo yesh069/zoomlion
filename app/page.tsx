@@ -15,7 +15,7 @@ import { btnOutline, btnOutlineLight, btnPrimary } from "@/lib/ui";
 import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = pageMeta({
-  title: "Zoomlion Ireland | Mini Excavators & Skid Steer Loaders for Sale",
+  title: "Zoomlion Ireland | Excavators & Skid Steer Loaders for Sale",
   description: SITE.description,
   path: "/",
   absoluteTitle: true,
@@ -55,7 +55,7 @@ export default function Home() {
               <span className="text-lime">Irish support.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
-              Zoomlion mini excavators and skid steer loaders for sale in Ireland, supplied, financed and
+              Zoomlion mini and crawler excavators and skid steer loaders for sale in Ireland, supplied, financed and
               serviced by <strong className="font-semibold text-white">{DEALER.name}</strong> from Watergrasshill, Co. Cork.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">

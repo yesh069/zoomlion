@@ -1,4 +1,12 @@
 {
+  "ze145gu-site": {
+    "width": 1400,
+    "height": 885
+  },
+  "ze145gu": {
+    "width": 564,
+    "height": 543
+  },
   "ze18gu-site": {
     "width": 1400,
     "height": 905
@@ -6,6 +14,14 @@
   "ze18gu": {
     "width": 615,
     "height": 428
+  },
+  "ze20g-site": {
+    "width": 1400,
+    "height": 943
+  },
+  "ze20g": {
+    "width": 489,
+    "height": 328
   },
   "ze27gu": {
     "width": 806,

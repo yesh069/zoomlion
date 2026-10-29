@@ -8,8 +8,8 @@ import { pageMeta } from "@/lib/meta";
 import { graph, itemList, webPage } from "@/lib/schema";
 import { DEALER } from "@/lib/site";
 
-const TITLE = "Zoomlion Mini Excavators & Skid Steers for Sale in Ireland";
-const DESCRIPTION = `Zoomlion ${MACHINES.map((m) => m.model).join(", ")} for sale in Ireland, with prices, specs and spec sheets. Authorised dealer ${DEALER.name}, Co. Cork.`;
+const TITLE = "Zoomlion Excavators & Skid Steers for Sale in Ireland";
+const DESCRIPTION = `Zoomlion mini and crawler excavators and skid steers for sale in Ireland, with prices, specs and spec sheets. Authorised dealer ${DEALER.name}, Co. Cork.`;
 
 export const metadata: Metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/products/", absoluteTitle: true });
 
@@ -26,7 +26,7 @@ export default function ProductsPage() {
         title="Zoomlion machines"
       >
         <p>
-          Zoomlion mini excavators and skid steer loaders for sale in Ireland, with prices. Every machine comes with delivery, finance
+          Zoomlion mini and crawler excavators and skid steer loaders for sale in Ireland, with prices. Every machine comes with delivery, finance
           options, servicing and genuine parts from {DEALER.name} in Co. Cork.
         </p>
       </PageHero>

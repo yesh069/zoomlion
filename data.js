@@ -78,7 +78,7 @@ const machines = [
     model: "ZE18GU",
     name: "ZE18GU Mini Excavator",
     type: "Mini excavator",
-    price: null, // price on request until the dealer sets one
+    price: 19000,
     image: "ze18gu.png",
     photo: { file: "ze18gu-site.jpg", alt: "Zoomlion ZE18GU mini excavator digging a trench on a building site" },
     summary:
@@ -130,6 +130,67 @@ const machines = [
     },
     specSheet: "/spec-sheets/zoomlion-ze18gu-brochure.pdf",
     source: "Zoomlion ZE18GU brochure (2024)",
+  },
+
+  // ── ZE20G ──────────────────────────────────────────────────────────────────
+  {
+    slug: "ze20g",
+    model: "ZE20G",
+    name: "ZE20G Mini Excavator",
+    type: "Mini excavator",
+    price: 21500,
+    image: "ze20g.png",
+    photo: { file: "ze20g-site.jpg", alt: "Zoomlion ZE20G mini excavator with cab loading gravel" },
+    summary:
+      "A 2-tonne mini excavator with an enclosed cab, Kubota Stage V engine, 980 / 1,300 mm adjustable undercarriage and 2.55 m dig depth.",
+    description: [
+      "The Zoomlion ZE20G is a 2-tonne class crawler excavator (1,970 kg operating weight) with a fully enclosed cab, for landscaping, trenching, utilities and all-weather work on tight sites. Its undercarriage has two widths, 980 mm and 1,300 mm (track gauge 750 / 1,070 mm): narrow to get through gates and between buildings, wide for stability when digging.",
+      "A Kubota D1105 engine rated at 15.4 kW at 2,400 rpm and certified to EU Stage V / Tier 4F powers it. It digs to 2,555 mm, reaches 4,130 mm and dumps at up to 2,550 mm, with 18 kN of bucket digging force, and travels at up to 4.2 km/h.",
+    ],
+    highlights: [
+      "Fully enclosed operator's cab",
+      "Kubota D1105 engine, 15.4 kW, EU Stage V / Tier 4F",
+      "Two-width undercarriage: 980 mm or 1,300 mm",
+      "18 kN bucket digging force",
+      "2,555 mm max. digging depth, 4,130 mm max. reach",
+      "Two-speed travel: 4.2 / 2.2 km/h",
+    ],
+    specs: {
+      "Basic technical data": {
+        "Operating weight": "1,970 kg",
+        "Standard bucket capacity": "0.04 m³",
+        "Slewing speed": "9.5 r/min",
+        "Travel speed (high / low)": "4.2 / 2.2 km/h",
+        "Max. drawbar pull": "16.6 kN",
+        "Bucket digging force": "18 kN",
+        "Stick digging force": "8.5 kN",
+      },
+      Engine: {
+        "Engine": "Kubota D1105",
+        "Rated power": "15.4 kW @ 2,400 rpm",
+        "Displacement": "1.123 L",
+        "Emission standard": "EU Stage V / Tier 4F",
+      },
+      Dimensions: {
+        "Length": "3,885 mm",
+        "Width": "980 / 1,300 mm",
+        "Height": "2,310 mm",
+        "Boom length": "1,830 mm",
+        "Stick length": "1,190 mm",
+        "Tail slewing radius": "1,100 mm",
+        "Track gauge": "750 / 1,070 mm",
+        "Length of track on ground": "1,240 mm",
+      },
+      "Operating range": {
+        "Max. digging reach": "4,130 mm",
+        "Max. digging reach at ground level": "4,070 mm",
+        "Max. digging depth": "2,555 mm",
+        "Max. digging height": "3,630 mm",
+        "Max. dumping height": "2,550 mm",
+      },
+    },
+    // No spec sheet download: the brochure we have carries another dealer's branding.
+    source: "Zoomlion ZE20G brochure",
   },
 
   // ── ZE27GU ─────────────────────────────────────────────────────────────────
@@ -208,6 +269,100 @@ const machines = [
     },
     specSheet: "https://en-product.zoomlion.com/upload/file/2025/06/25/fd8ffcf907c642d58760a9b3e2edfe0b.pdf",
     source: "https://en-product.zoomlion.com/product/pro-detail-1036.htm",
+  },
+
+  // ── ZE145GU ────────────────────────────────────────────────────────────────
+  {
+    slug: "ze145gu",
+    model: "ZE145GU",
+    name: "ZE145GU Crawler Excavator",
+    type: "Crawler excavator",
+    price: 92000,
+    image: "ze145gu.png",
+    photo: { file: "ze145gu-site.jpg", alt: "Zoomlion ZE145GU crawler excavator with dozer blade on a construction site" },
+    summary:
+      "A 15-tonne short-tail crawler excavator with a 90 kW Cummins Stage V engine, ROPS cab, 5.5 m dig depth and 8.4 m reach.",
+    description: [
+      "The Zoomlion ZE145GU is a 15-tonne class crawler excavator (15,800 kg operating weight) for groundworks, roadworks, drainage and general construction. Its short tail swing radius of 1,490 mm keeps the counterweight close to the tracks, so it works in tighter spaces than a conventional machine of its size.",
+      "Power comes from a customised Cummins F3.8 engine rated at 90 kW at 2,200 rpm, with high-pressure common-rail injection, meeting EPA T4F / EU Stage V. Zoomlion's full electronic control and dual-pump power control (2 × 127.5 L/min) cut throttling losses and fuel use. It digs to 5,505 mm, reaches 8,410 mm and delivers 108 kN of bucket digging force.",
+      "The G-series cab is ROPS certified, with large reinforced glass, a 135 mm-stroke suspension seat, a large touch screen, high-power air conditioning and a rear-view camera as standard. The fuel, oil, air, pilot and A/C filters are all reachable from ground level for quick daily maintenance.",
+    ],
+    highlights: [
+      "Customised Cummins F3.8 engine, 90 kW, EU Stage V",
+      "Short tail swing: 1,490 mm radius",
+      "ROPS-certified G-series cab with rear-view camera as standard",
+      "108 kN bucket and 69 kN arm digging force",
+      "Two variable piston pumps, 2 × 127.5 L/min",
+      "Ground-level access to every daily service filter",
+    ],
+    specs: {
+      "Basic technical data": {
+        "Operating weight": "15,800 kg",
+        "Bucket capacity range": "0.1 – 0.6 m³",
+        "Standard bucket": "0.6 m³ reinforced",
+      },
+      Engine: {
+        "Brand": "Cummins",
+        "Model": "F3.8",
+        "Rated power": "90 kW @ 2,200 rpm",
+        "Displacement": "3.8 L",
+        "Emission standard": "EPA T4F / EU Stage V",
+      },
+      "Hydraulic system": {
+        "Main pump": "Two variable displacement piston pumps, max. flow 2 × 127.5 L/min",
+        "Pilot pump": "One gear pump, max. flow 17 L/min",
+        "Max. pressure: equipment": "34.3 MPa",
+        "Max. pressure: swing": "25 MPa",
+        "Max. pressure: travel": "34.3 MPa",
+        "Max. pressure: boost": "37 MPa",
+        "Max. pressure: pilot system": "3.9 MPa",
+      },
+      "Upper frame": {
+        "Max. swing speed": "12 r/min",
+        "Max. swing torque": "39 kN·m",
+      },
+      Undercarriage: {
+        "Carrier rollers (each side)": "1 (two-side supported track rollers)",
+        "Track rollers (each side)": "7",
+        "Idlers (each side)": "1",
+        "Travel speed (high / low)": "5.4 / 3.0 km/h",
+        "Max. drawbar pull": "130 kN",
+        "Gradeability": "70%",
+      },
+      "Work equipment": {
+        "Boom length": "4,600 mm",
+        "Arm length": "2,500 mm",
+        "Bucket digging force": "108 kN",
+        "Arm digging force": "69 kN",
+      },
+      "Overall dimensions": {
+        "Overall length (to counterweight)": "7,395 mm",
+        "Overall length (to dozer)": "8,110 mm",
+        "Overall width (including handrail)": "2,500 mm",
+        "Overall width (track)": "2,490 mm",
+        "Overall height": "2,955 mm",
+        "Track gauge": "1,990 mm",
+        "Length of track on ground": "2,920 mm",
+      },
+      "Working range": {
+        "Max. digging height": "9,390 mm",
+        "Max. digging depth": "5,505 mm",
+        "Max. digging reach": "8,410 mm",
+        "Tail swing radius": "1,490 mm",
+        "Front minimum swing radius": "2,165 mm",
+      },
+      "Service refill capacities": {
+        "Fuel tank": "200 L",
+        "Engine coolant": "27 L",
+        "Engine oil": "12 L",
+        "Swing drive": "1.8 L",
+        "Final drive (each side)": "2.2 L",
+        "Hydraulic system": "130 L",
+        "Hydraulic tank": "145 L",
+      },
+    },
+    specSheet: "/spec-sheets/zoomlion-ze145gu-brochure.pdf",
+    source: "Zoomlion ZE145GU-Europe brochure (2025)",
   },
 
   // ── ZS090V ─────────────────────────────────────────────────────────────────

@@ -14,7 +14,7 @@ const bg = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" hei
   <rect y="${H - 14}" width="${W}" height="14" fill="#a4ce4e"/>
   <text x="70" y="300" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="76" fill="#ffffff">ZOOMLION</text>
   <text x="70" y="380" font-family="Arial Narrow, Arial, sans-serif" font-weight="800" font-size="76" fill="#a4ce4e">IRELAND</text>
-  <text x="70" y="450" font-family="Arial, sans-serif" font-size="28" fill="#d6d8dc">Mini excavators · Skid steer loaders</text>
+  <text x="70" y="450" font-family="Arial, sans-serif" font-size="28" fill="#d6d8dc">Excavators · Skid steer loaders</text>
   <text x="70" y="540" font-family="Arial, sans-serif" font-size="24" fill="#a9adb5">Authorised distributor: O'Regan Plant Sales, Co. Cork</text>
 </svg>`);
 
