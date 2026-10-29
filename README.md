@@ -14,7 +14,7 @@ Next.js (App Router, TypeScript, Tailwind CSS v4), static export to `out/`, depl
 
 ## Editing content
 
-- **Machines:** `lib/catalogue.ts` (model, type, price, specs, images). Add a machine there and it appears everywhere: home, products, the menu, the sitemap and llms.txt. Put product shots (cut-out PNG) and site photos (JPG) in `assets/machines/`; the build converts them to WebP in `public/machines/`. Only use manufacturer spec figures (Zoomlion product pages / spec sheets).
+- **Machines: edit `data.js` only.** It holds every machine (model, type, price, images, specs, spec sheet) and starts with a plain-English guide to editing, adding and removing machines. The pages map over that list, so a change there updates the homepage, products page, comparison table, menu, footer, machine pages, enquiry form, sitemap and llms.txt. Put images in `assets/machines/` (the build converts them to WebP and records their sizes in `lib/image-sizes.json`) and local spec sheet PDFs in `public/spec-sheets/`. The build type-checks `data.js`, so a typo stops it with the line number.
 - **Contact details:** `lib/site.ts`.
 - **Site-wide FAQs:** `lib/faqs.ts`.
 

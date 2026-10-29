@@ -8,7 +8,7 @@ import MachineCard from "@/components/MachineCard";
 import { QuoteButton } from "@/components/QuoteProvider";
 import { CheckIcon, DownloadIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 import { asset } from "@/lib/asset";
-import { MACHINES, VAT_NOTE, formatAmount, formatPrice, machineBySlug, machinePath, type Faq, type Machine } from "@/lib/catalogue";
+import { MACHINES, formatAmount, formatPrice, machineBySlug, machinePath, priceNote, specValue, type Faq, type Machine } from "@/lib/catalogue";
 import { pageMeta } from "@/lib/meta";
 import { faqPage, graph, product, webPage } from "@/lib/schema";
 import { DEALER, waLink } from "@/lib/site";
@@ -19,7 +19,7 @@ type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
 export const generateStaticParams = () => MACHINES.map((m) => ({ slug: m.slug }));
 
-const titleFor = (m: Machine) => `Zoomlion ${m.name} for Sale in Ireland | ${formatPrice(m.price)}`;
+const titleFor = (m: Machine) => `Zoomlion ${m.name} for Sale in Ireland${m.price === null ? "" : ` | ${formatPrice(m.price)}`}`;
 
 /** Questions every machine page answers, plus any written for the machine itself. */
 function machineFaqs(m: Machine): Faq[] {
@@ -27,7 +27,10 @@ function machineFaqs(m: Machine): Faq[] {
   return [
     {
       q: `How much is the Zoomlion ${m.model} in Ireland?`,
-      a: `The Zoomlion ${m.model} ${kind} is ${formatPrice(m.price)} from ${DEALER.name}, the authorised Zoomlion distributor in Ireland. Attachments, delivery and finance are quoted on request: call ${DEALER.phoneDisplay} or send an enquiry.`,
+      a:
+        m.price === null
+          ? `The Zoomlion ${m.model} ${kind} is priced on request from ${DEALER.name}, the authorised Zoomlion distributor in Ireland. Call ${DEALER.phoneDisplay} or send an enquiry for a written quote, with attachments, delivery and finance options.`
+          : `The Zoomlion ${m.model} ${kind} is ${formatPrice(m.price)} from ${DEALER.name}, the authorised Zoomlion distributor in Ireland. Attachments, delivery and finance are quoted on request: call ${DEALER.phoneDisplay} or send an enquiry.`,
     },
     {
       q: `Where can I buy the Zoomlion ${m.model} in Ireland?`,
@@ -35,7 +38,7 @@ function machineFaqs(m: Machine): Faq[] {
     },
     {
       q: `What is the operating weight of the Zoomlion ${m.model}?`,
-      a: `The Zoomlion ${m.model} has an operating weight of ${m.specs.find((s) => s.label === "Operating weight")?.value ?? "see the spec sheet"}. Full manufacturer figures are in the specifications table and spec sheet on this page.`,
+      a: `The Zoomlion ${m.model} has an operating weight of ${specValue(m, "Operating weight") ?? "listed in the spec sheet"}. Full manufacturer figures are in the specifications table and spec sheet on this page.`,
     },
     {
       q: `Who services the Zoomlion ${m.model}?`,
@@ -50,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!m) return {};
   return pageMeta({
     title: titleFor(m),
-    description: `${m.summary} ${formatPrice(m.price)}, Co. Cork.`,
+    description: `${m.summary} ${formatPrice(m.price)}, Co. Cork.`.slice(0, 160),
     path: machinePath(m),
     absoluteTitle: true,
     image: { url: m.image.src, width: m.image.width, height: m.image.height },
@@ -103,9 +106,9 @@ export default async function MachinePage({ params }: Props) {
 
             <div className="mt-6 flex items-end gap-4 border-l-4 border-lime bg-white px-5 py-4">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-steel">Price (excl. VAT)</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel">{m.price === null ? "Price" : "Price (excl. VAT)"}</p>
                 <p className="display text-5xl text-graphite">
-                  {formatAmount(m.price)} <span className="font-sans text-lg font-semibold normal-case text-steel">{VAT_NOTE}</span>
+                  {formatAmount(m.price)} <span className="font-sans text-lg font-semibold normal-case text-steel">{priceNote(m.price)}</span>
                 </p>
               </div>
               <p className="pb-1.5 text-sm text-steel">Finance available · Delivered across Ireland</p>
@@ -172,21 +175,35 @@ export default async function MachinePage({ params }: Props) {
             <h2 className="display text-4xl text-graphite">Specifications</h2>
             <p className="mt-2 text-steel">Manufacturer figures for the Zoomlion {m.model}.</p>
           </div>
-          {m.pdf && (
-            <a href={m.pdf} className={btnOutline} target="_blank" rel="noopener">
+          {m.specSheet && (
+            <a href={m.specSheet.startsWith("/") ? asset(m.specSheet) : m.specSheet} className={btnOutline} target="_blank" rel="noopener">
               <DownloadIcon /> Spec sheet (PDF)
             </a>
           )}
         </div>
-        <table className="mt-8 w-full border-collapse text-left">
+        <table className="mt-2 w-full border-collapse text-left">
           <caption className="sr-only">Zoomlion {m.name} specifications</caption>
-          <tbody>
-            {m.specs.map((s) => (
-              <tr key={s.label} className="border-b border-line odd:bg-paper">
-                <th scope="row" className="w-1/2 px-4 py-3.5 font-semibold text-graphite">{s.label}</th>
-                <td className="px-4 py-3.5 text-steel">{s.value}</td>
+          {m.specGroups.map((g) => (
+            <tbody key={g.title}>
+              <tr>
+                <th scope="colgroup" colSpan={2} className="border-b-2 border-graphite px-4 pb-2 pt-8 font-display text-xl font-bold uppercase text-graphite">
+                  {g.title}
+                </th>
               </tr>
-            ))}
+              {g.rows.map((s) => (
+                <tr key={s.label} className="border-b border-line odd:bg-paper">
+                  <th scope="row" className="w-1/2 px-4 py-3.5 font-semibold text-graphite">{s.label}</th>
+                  <td className="px-4 py-3.5 text-steel">{s.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
+          <tbody>
+            <tr>
+              <th scope="colgroup" colSpan={2} className="border-b-2 border-graphite px-4 pb-2 pt-8 font-display text-xl font-bold uppercase text-graphite">
+                Price
+              </th>
+            </tr>
             <tr className="border-b border-line">
               <th scope="row" className="w-1/2 px-4 py-3.5 font-semibold text-graphite">Price</th>
               <td className="px-4 py-3.5 font-semibold text-graphite">{formatPrice(m.price)}</td>

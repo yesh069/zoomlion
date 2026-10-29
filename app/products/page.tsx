@@ -3,13 +3,13 @@ import CtaBand from "@/components/CtaBand";
 import JsonLd from "@/components/JsonLd";
 import MachineCard from "@/components/MachineCard";
 import PageHero from "@/components/PageHero";
-import { MACHINES, formatPrice } from "@/lib/catalogue";
+import { MACHINES, formatPrice, specValue } from "@/lib/catalogue";
 import { pageMeta } from "@/lib/meta";
 import { graph, itemList, webPage } from "@/lib/schema";
 import { DEALER } from "@/lib/site";
 
-const TITLE = "Zoomlion Excavators & Skid Steers for Sale in Ireland";
-const DESCRIPTION = `Zoomlion ${MACHINES.map((m) => `${m.model} (${formatPrice(m.price)})`).join(", ")} for sale in Ireland from ${DEALER.name}, Co. Cork.`;
+const TITLE = "Zoomlion Mini Excavators & Skid Steers for Sale in Ireland";
+const DESCRIPTION = `Zoomlion ${MACHINES.map((m) => m.model).join(", ")} for sale in Ireland, with prices, specs and spec sheets. Authorised dealer ${DEALER.name}, Co. Cork.`;
 
 export const metadata: Metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/products/", absoluteTitle: true });
 
@@ -56,8 +56,8 @@ export default function ProductsPage() {
                 <tr key={m.slug} className="border-b border-line odd:bg-paper">
                   <th scope="row" className="px-4 py-3.5 font-semibold text-graphite">Zoomlion {m.model}</th>
                   <td className="px-4 py-3.5 text-steel">{m.type}</td>
-                  <td className="px-4 py-3.5 text-steel">{m.specs.find((s) => s.label === "Operating weight")?.value}</td>
-                  <td className="px-4 py-3.5 text-steel">{m.specs.find((s) => s.label === "Rated power")?.value}</td>
+                  <td className="px-4 py-3.5 text-steel">{specValue(m, "Operating weight")}</td>
+                  <td className="px-4 py-3.5 text-steel">{specValue(m, "Rated power")}</td>
                   <td className="px-4 py-3.5 font-semibold text-graphite">{formatPrice(m.price)}</td>
                 </tr>
               ))}

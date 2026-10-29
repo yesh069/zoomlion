@@ -32,6 +32,7 @@ export function GET() {
     `- [All products](${absUrl("/products/")})`,
     ...MACHINES.flatMap((m) => [
       `- [Zoomlion ${m.name}](${absUrl(machinePath(m))}): ${formatPrice(m.price)}. ${m.summary}`,
+      ...(m.specSheet ? [`  - Spec sheet: ${m.specSheet.startsWith("/") ? absUrl(m.specSheet) : m.specSheet}`] : []),
       ...m.specs.map((s) => `  - ${s.label}: ${s.value}`),
     ]),
     "",

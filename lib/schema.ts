@@ -104,7 +104,7 @@ export function product(m: Machine) {
     category: m.type,
     brand: { "@id": BRAND_ID },
     manufacturer,
-    offers: {
+    offers: m.price === null ? undefined : {
       "@type": "Offer",
       url: absUrl(machinePath(m)),
       price: m.price,

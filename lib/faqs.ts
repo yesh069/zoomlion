@@ -15,7 +15,7 @@ export const BUYING_FAQS: Faq[] = [
   },
   {
     q: "How much do Zoomlion machines cost in Ireland?",
-    a: `${MACHINES.map((m) => `The Zoomlion ${m.model} ${m.type.toLowerCase()} is ${formatPrice(m.price)}`).join("; ")}. Attachments, delivery and finance are quoted on request.`,
+    a: `${MACHINES.map((m) => (m.price === null ? `the Zoomlion ${m.model} ${m.type.toLowerCase()} is priced on request` : `the Zoomlion ${m.model} ${m.type.toLowerCase()} is ${formatPrice(m.price)}`)).join("; ").replace(/^t/, "T")}. Attachments, delivery and finance are quoted on request.`,
   },
   {
     q: "Do you offer finance on Zoomlion machines?",
