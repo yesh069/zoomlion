@@ -10,7 +10,7 @@ import { pageMeta } from "@/lib/meta";
 import { DEALER, addressLines, waLink } from "@/lib/site";
 
 const TITLE = "Contact Zoomlion Ireland | O'Regan Plant Sales, Cork";
-const DESCRIPTION = `Contact ${DEALER.name}, authorised Zoomlion distributor in Ireland. Call ${DEALER.phoneDisplay}, WhatsApp or visit us in Watergrasshill, Co. Cork.`;
+const DESCRIPTION = `Contact ${DEALER.name} about Zoomlion machinery in Ireland. Call ${DEALER.phoneDisplay}, WhatsApp or visit us in Watergrasshill, Co. Cork.`;
 
 export const metadata: Metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/contact/", absoluteTitle: true });
 

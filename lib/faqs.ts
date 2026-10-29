@@ -7,11 +7,11 @@ import { DEALER } from "./site";
 export const BUYING_FAQS: Faq[] = [
   {
     q: "Where can I buy Zoomlion machinery in Ireland?",
-    a: `${DEALER.name} is the authorised Zoomlion distributor in Ireland, based at Watergrasshill Business Park, Co. Cork (${DEALER.address.postcode}). You can request a quote on zoomlion.ie, call ${DEALER.phoneDisplay} or email ${DEALER.email}.`,
+    a: `${DEALER.name} supplies Zoomlion machinery in Ireland from Watergrasshill Business Park, Co. Cork (${DEALER.address.postcode}). You can request a quote on zoomlion.ie, call ${DEALER.phoneDisplay} or email ${DEALER.email}.`,
   },
   {
     q: "Is Zoomlion a good brand?",
-    a: `Zoomlion is a major international manufacturer of construction machinery, known for strong, well-equipped machines at competitive prices. In Ireland, Zoomlion machines are supplied through ${DEALER.name}, the authorised distributor, with genuine parts and local service.`,
+    a: `Zoomlion is a major international manufacturer of construction machinery, known for strong, well-equipped machines at competitive prices. In Ireland, Zoomlion machines are supplied through ${DEALER.name}, with genuine parts and local service.`,
   },
   {
     q: "How much do Zoomlion machines cost in Ireland?",

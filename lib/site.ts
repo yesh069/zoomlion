@@ -6,7 +6,7 @@ export const SITE = {
   name: "Zoomlion Ireland",
   tagline: "Zoomlion machinery in Ireland, sold and supported by O'Regan Plant Sales",
   description:
-    "Zoomlion excavators and skid steer loaders for sale in Ireland, with prices. Authorised distributor O'Regan Plant Sales, Co. Cork: finance, service.",
+    "Zoomlion excavators and skid steer loaders for sale in Ireland, with prices. Supplied by O'Regan Plant Sales, Co. Cork: finance, service.",
   locale: "en_IE",
 } as const;
 
@@ -36,7 +36,7 @@ export const addressLines = [DEALER.address.street, `${DEALER.address.locality},
 
 /** What the dealer offers, shown in the homepage strip under the hero. */
 export const DEALER_HIGHLIGHTS = [
-  { value: "Authorised", label: "Zoomlion distributor for Ireland" },
+  { value: "Ireland", label: "Zoomlion sales and support" },
   { value: "Co. Cork", label: "Sales, parts and service depot" },
   { value: "Finance", label: "Options for business buyers" },
   { value: "Nationwide", label: "Delivery across Ireland" },

@@ -48,7 +48,7 @@ export default function Home() {
         <div className="slab absolute inset-y-0 right-[40%] hidden w-[10%] bg-lime/15 lg:block" aria-hidden />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-14 sm:px-6 lg:min-h-[640px] lg:grid-cols-[1.1fr_1fr] lg:py-20">
           <div>
-            <p className="eyebrow text-lime">Authorised Zoomlion distributor · Ireland</p>
+            <p className="eyebrow text-lime">Zoomlion machinery · Ireland</p>
             <h1 className="display mt-5 text-[3.2rem] sm:text-7xl xl:text-[5.5rem]">
               Zoomlion power.
               <br />
@@ -129,13 +129,12 @@ export default function Home() {
               straightforward servicing, at a price that makes sense for Irish contractors, farmers and hire fleets.
             </p>
             <p>
-              As the authorised Zoomlion distributor in Ireland, we supply new machines through the official channel, so you get
-              genuine parts, warranty support and a local team who know the machines.
+              We supply new Zoomlion machines with genuine parts, warranty support and a local team who know the machines.
             </p>
             <div className="grid gap-4 pt-4 sm:grid-cols-2">
               <div className="flex gap-3 border-l-4 border-lime bg-white/5 p-5">
                 <ShieldIcon className="size-7 shrink-0 text-lime" />
-                <p className="text-base">Official Irish distributor: machines supplied through Zoomlion&apos;s own channel</p>
+                <p className="text-base">Irish supply: machines backed by genuine parts and local support</p>
               </div>
               <div className="flex gap-3 border-l-4 border-lime bg-white/5 p-5">
                 <WrenchIcon className="size-7 shrink-0 text-lime" />
@@ -149,11 +148,11 @@ export default function Home() {
       {/* Why buy from O'Regan */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
         <div className="max-w-3xl">
-          <p className="eyebrow text-lime-deep">Your Zoomlion dealer</p>
+          <p className="eyebrow text-lime-deep">Your Zoomlion supplier</p>
           <h2 className="display mt-3 text-5xl text-graphite sm:text-6xl">Bought in Ireland, backed in Ireland</h2>
           <p className="mt-5 text-lg leading-relaxed text-steel">
-            {DEALER.name} is the authorised Zoomlion distributor in Ireland. We have sold and hired plant machinery from Co. Cork for
-            years, and we stay with you after the sale.
+            {DEALER.name} supplies Zoomlion machinery across Ireland. We have sold and hired plant machinery from Co. Cork for years,
+            and we stay with you after the sale.
           </p>
         </div>
         <div className="mt-12 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">

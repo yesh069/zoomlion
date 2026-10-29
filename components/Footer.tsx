@@ -12,8 +12,7 @@ export default function Footer() {
         <div>
           <Logo dark />
           <p className="mt-6 max-w-sm leading-relaxed">
-            Zoomlion machinery for sale in Ireland. Supplied, delivered and serviced by {DEALER.name}, authorised Zoomlion distributor, from
-            Watergrasshill, Co. Cork.
+            Zoomlion machinery for sale in Ireland. Supplied, delivered and serviced by {DEALER.name} from Watergrasshill, Co. Cork.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 # zoomlion.ie
 
-Website for Zoomlion machinery in Ireland, run by O'Regan Plant Sales (authorised distributor, Watergrasshill, Co. Cork).
+Website for Zoomlion machinery in Ireland, run by O'Regan Plant Sales (Watergrasshill, Co. Cork).
 Lead generation: each machine shows its price, every "Enquire" opens the enquiry form, and WhatsApp/phone/email are on every page.
 
 Next.js (App Router, TypeScript, Tailwind CSS v4), static export to `out/`, deployed to GitHub Pages by `.github/workflows/pages.yml` on every push to `main` (Firebase config is kept for later).

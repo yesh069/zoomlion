@@ -26,7 +26,7 @@ export const dealer = {
   "@id": DEALER_ID,
   name: DEALER.name,
   alternateName: SITE.name,
-  description: `Authorised Zoomlion distributor in Ireland. ${DEALER.name} sells, delivers and services Zoomlion machinery from Watergrasshill, Co. Cork.`,
+  description: `${DEALER.name} sells, delivers and services Zoomlion machinery from Watergrasshill, Co. Cork.`,
   url: SITE.url,
   logo: absUrl("/brand/zoomlion-logo.svg"),
   image: absUrl("/og.png"),

@@ -29,8 +29,8 @@ function machineFaqs(m: Machine): Faq[] {
       q: `How much is the Zoomlion ${m.model} in Ireland?`,
       a:
         m.price === null
-          ? `The Zoomlion ${m.model} ${kind} is priced on request from ${DEALER.name}, the authorised Zoomlion distributor in Ireland. Call ${DEALER.phoneDisplay} or send an enquiry for a written quote, with attachments, delivery and finance options.`
-          : `The Zoomlion ${m.model} ${kind} is ${formatPrice(m.price)} from ${DEALER.name}, the authorised Zoomlion distributor in Ireland. Attachments, delivery and finance are quoted on request: call ${DEALER.phoneDisplay} or send an enquiry.`,
+          ? `The Zoomlion ${m.model} ${kind} is priced on request from ${DEALER.name}. Call ${DEALER.phoneDisplay} or send an enquiry for a written quote, with attachments, delivery and finance options.`
+          : `The Zoomlion ${m.model} ${kind} is ${formatPrice(m.price)} from ${DEALER.name}. Attachments, delivery and finance are quoted on request: call ${DEALER.phoneDisplay} or send an enquiry.`,
     },
     {
       q: `Where can I buy the Zoomlion ${m.model} in Ireland?`,

@@ -30,7 +30,7 @@ export default function Header() {
       <div className="bg-night text-[0.82rem] text-white/75">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <p className="truncate">
-            <span className="font-semibold text-lime">Authorised Zoomlion distributor</span>
+            <span className="font-semibold text-lime">Zoomlion machinery in Ireland</span>
             <span className="hidden sm:inline"> · {DEALER.name}, Co. Cork</span>
           </p>
           <div className="flex shrink-0 items-center gap-5">

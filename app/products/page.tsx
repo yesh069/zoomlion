@@ -9,7 +9,7 @@ import { graph, itemList, webPage } from "@/lib/schema";
 import { DEALER } from "@/lib/site";
 
 const TITLE = "Zoomlion Excavators & Skid Steers for Sale in Ireland";
-const DESCRIPTION = `Zoomlion mini and crawler excavators and skid steers for sale in Ireland, with prices, specs and spec sheets. Authorised dealer ${DEALER.name}, Co. Cork.`;
+const DESCRIPTION = `Zoomlion mini and crawler excavators and skid steers for sale in Ireland, with prices, specs and spec sheets. Supplied by ${DEALER.name}, Co. Cork.`;
 
 export const metadata: Metadata = pageMeta({ title: TITLE, description: DESCRIPTION, path: "/products/", absoluteTitle: true });
 
