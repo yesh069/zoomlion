@@ -5,7 +5,7 @@ compatibility_date = "2026-01-01"
 # Plain settings. The Resend API key is NOT here: it is a secret, set with
 #   npx wrangler secret put RESEND_API_KEY
 [vars]
-MAIL_FROM = "Zoomlion Ireland <enquiries@zoomlion.ie>"
+MAIL_FROM = "Zoomlion Ireland <enquiries@mail.zoomlion.ie>"
 MAIL_TO = "info@rippa.ie"
 MAIL_CC = "office@oreganplantsales.com"
 # Sites allowed to post to this worker (comma separated, no trailing slash).
