@@ -86,13 +86,15 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-paper">
-        <iframe
-          title={`Map: ${DEALER.name}, Watergrasshill, Co. Cork`}
-          src={MAP_SRC}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="block h-[420px] w-full border-0 grayscale-[30%]"
-        />
+        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
+          <iframe
+            title={`Map: ${DEALER.name}, Watergrasshill, Co. Cork`}
+            src={MAP_SRC}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="block h-[380px] w-full border-0 grayscale-[30%]"
+          />
+        </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_1.6fr] lg:py-20">
