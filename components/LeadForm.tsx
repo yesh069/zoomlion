@@ -6,7 +6,7 @@ import { DEALER, mailtoLink } from "@/lib/site";
 import { btnPrimary } from "@/lib/ui";
 import { CheckIcon } from "./icons";
 
-// Quote / contact form. Posts to the Apps Script mailer when
+// Quote / contact form. Posts to the Cloudflare Worker (worker/, sends via Resend) when
 // NEXT_PUBLIC_LEAD_ENDPOINT is set; otherwise it opens the visitor's email app
 // with the enquiry filled in, so no lead is ever lost.
 
@@ -54,8 +54,8 @@ export default function LeadForm({ machine, source }: { machine?: string; source
     }
     setStatus("sending");
     try {
-      // Apps Script web apps don't send CORS headers; a no-cors POST still delivers.
-      await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: new URLSearchParams(data as unknown as Record<string, string>) });
+      const res = await fetch(ENDPOINT, { method: "POST", body: data });
+      if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
       form.reset();
     } catch {

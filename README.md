@@ -27,7 +27,9 @@ Next.js (App Router, TypeScript, Tailwind CSS v4), static export to `out/`, depl
 
 ## Forms
 
-Set `NEXT_PUBLIC_LEAD_ENDPOINT` to the Google Apps Script web app (`apps-script/`). Until it's set, forms open the visitor's email app with the enquiry filled in.
+Enquiries are emailed with Resend by the Cloudflare Worker in `worker/` (sender, recipients and allowed sites are in `worker/wrangler.toml`). Set `NEXT_PUBLIC_LEAD_ENDPOINT` to the deployed worker URL when building. Until it's set, forms open the visitor's email app with the enquiry filled in.
+
+To deploy the worker (once): `cd worker && npm install && npx wrangler login && npx wrangler secret put RESEND_API_KEY && npx wrangler deploy`. Then build the site with the printed `https://zoomlion-lead.<you>.workers.dev` URL as `NEXT_PUBLIC_LEAD_ENDPOINT`. `apps-script/` is the older Google Sheets option and is no longer used.
 
 ## Develop & deploy
 
